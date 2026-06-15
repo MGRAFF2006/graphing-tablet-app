@@ -181,7 +181,8 @@ fn invalid_arg(message: String) -> io::Error {
 fn print_help() {
     println!(
         "graphpad-daemon\n\n\
-         Usage: graphpad-daemon [--listen ADDR:PORT] [--backend auto|log|uinput] \\\n+         [--pressure-curve linear|soft|firm]\n\n\
+         Usage: graphpad-daemon [--listen ADDR:PORT] [--backend auto|log|uinput] \\\n\
+         [--pressure-curve linear|soft|firm]\n\n\
          Default listen address: {DEFAULT_LISTEN_ADDR}"
     );
 }
