@@ -1,0 +1,23 @@
+# GraphPad Virtual Tablet
+[Device]
+Name=GraphPad Virtual Tablet
+DeviceMatch=Name:GraphPad Virtual Tablet
+Class=Tablet
+Width=214
+Height=273
+IntegratedIn=none
+
+[Features]
+PressureLevels=4096
+Tilt=yes
+Touch=yes
+Stylus=yes
+
+[Buttons]
+# Side switch 1 (primary)
+Button1=Button A
+# Side switch 2 (secondary / eraser toggle)
+Button2=Button B
+
+[Stylus]
+Type=generic

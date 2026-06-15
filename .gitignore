@@ -1,0 +1,22 @@
+# Build artifacts
+host/target/
+**/*.rs.bk
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Xcode
+ios/**/xcuserdata/
+ios/**/*.xcworkspace/xcuserdata/
+ios/**/DerivedData/
+*.pbxuser
+
+# Cargo
+host/Cargo.lock
+
+# OS
+Thumbs.db

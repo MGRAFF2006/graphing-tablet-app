@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package graphpad;
+
+// GraphPad wire protocol v1 — binary framing is documented in docs/protocol.md.
+// This schema defines the semantic message types shared by iPad, Android, and host.
+
+enum FrameType {
+  FRAME_TYPE_UNSPECIFIED = 0;
+  HELLO = 1;
+  PEN_DOWN = 2;
+  PEN_MOVE = 3;
+  PEN_UP = 4;
+  PEN_HOVER = 5;
+  BUTTON = 6;
+  HEARTBEAT = 7;
+  CONFIG = 8;
+}
+
+enum MappingMode {
+  MAPPING_ABSOLUTE = 0;
+  MAPPING_RELATIVE = 1;
+}
+
+enum PressureCurve {
+  CURVE_LINEAR = 0;
+  CURVE_SOFT = 1;
+  CURVE_FIRM = 2;
+}
+
+message Hello {
+  uint32 protocol_version = 1;
+  string device_name = 2;
+  float screen_width_mm = 3;
+  float screen_height_mm = 4;
+  float max_pressure = 5;
+}
+
+message PenEvent {
+  uint64 timestamp_us = 1;
+  float x_norm = 2;       // 0.0–1.0 across iPad active area
+  float y_norm = 3;
+  float pressure = 4;     // 0.0–1.0
+  float tilt_x = 5;
+  float tilt_y = 6;
+  uint32 buttons = 7;
+  uint32 sequence = 8;
+}
+
+message ButtonEvent {
+  uint64 timestamp_us = 1;
+  uint32 buttons = 2;
+}
+
+message Heartbeat {
+  uint64 timestamp_us = 1;
+}
+
+message Config {
+  MappingMode mapping_mode = 1;
+  PressureCurve pressure_curve = 2;
+  uint32 target_monitor = 3;
+  float area_left = 4;
+  float area_top = 5;
+  float area_right = 6;
+  float area_bottom = 7;
+}
+
+message HostHello {
+  uint32 protocol_version = 1;
+  string host_name = 2;
+  uint32 tablet_width = 3;
+  uint32 tablet_height = 4;
+  uint32 pressure_max = 5;
+}

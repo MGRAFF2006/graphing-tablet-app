@@ -1,0 +1,11 @@
+[package]
+name = "graphpad-input-windows"
+description = "Windows virtual digitizer backend for GraphPad (Phase 3 stub)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+graphpad-core = { path = "../graphpad-core" }
+log.workspace = true

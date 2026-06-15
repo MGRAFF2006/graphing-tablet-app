@@ -1,0 +1,15 @@
+[package]
+name = "graphpad-input-linux"
+description = "Linux uinput virtual graphics tablet backend for GraphPad"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+graphpad-core = { path = "../graphpad-core" }
+log.workspace = true
+thiserror.workspace = true
+
+[target.'cfg(target_os = "linux")'.dependencies]
+evdev = "0.13"
