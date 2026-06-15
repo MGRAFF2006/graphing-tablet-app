@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="275mm" height="206mm" viewBox="0 0 275 206">
+  <rect x="0" y="0" width="275" height="206" rx="8" fill="#20242b"/>
+  <rect x="10" y="10" width="255" height="186" rx="4" fill="#333a45"/>
+  <text x="137.5" y="105" text-anchor="middle" font-size="10" fill="#d7dde8" font-family="sans-serif">GraphPad Virtual Tablet</text>
+</svg>
+

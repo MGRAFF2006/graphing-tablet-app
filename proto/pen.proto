@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package graphpad.v1;
+
+// The Rust MVP uses a compact hand-rolled binary frame described in docs/protocol.md
+// so it can build without protoc. This schema is the stable contract for future
+// generated clients and compatibility tests.
+
+message Hello {
+  uint32 protocol_version = 1;
+  string device_name = 2;
+  uint32 width_px = 3;
+  uint32 height_px = 4;
+  uint32 max_pressure = 5;
+}
+
+enum PenPhase {
+  PEN_PHASE_UNSPECIFIED = 0;
+  PEN_PHASE_DOWN = 1;
+  PEN_PHASE_MOVE = 2;
+  PEN_PHASE_UP = 3;
+  PEN_PHASE_HOVER = 4;
+}
+
+message PenEvent {
+  uint64 timestamp_us = 1;
+  float x_norm = 2;
+  float y_norm = 3;
+  float pressure = 4;
+  float tilt_x = 5;
+  float tilt_y = 6;
+  uint32 buttons = 7;
+  uint32 sequence = 8;
+  PenPhase phase = 9;
+}
+
+message ButtonEvent {
+  uint64 timestamp_us = 1;
+  uint32 buttons = 2;
+  uint32 sequence = 3;
+}
+
+message Heartbeat {
+  uint64 timestamp_us = 1;
+}
+
+enum MappingMode {
+  MAPPING_MODE_UNSPECIFIED = 0;
+  MAPPING_MODE_ABSOLUTE = 1;
+  MAPPING_MODE_RELATIVE = 2;
+}
+
+message Config {
+  uint32 display_width = 1;
+  uint32 display_height = 2;
+  MappingMode mapping_mode = 3;
+  bool preserve_aspect_ratio = 4;
+}
+
+message ClientFrame {
+  oneof payload {
+    Hello hello = 1;
+    PenEvent pen = 2;
+    ButtonEvent button = 3;
+    Heartbeat heartbeat = 4;
+  }
+}
+
+message HostFrame {
+  oneof payload {
+    Config config = 1;
+    Heartbeat heartbeat = 2;
+  }
+}
+

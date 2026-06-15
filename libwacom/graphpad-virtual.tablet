@@ -1,0 +1,21 @@
+[Device]
+Name=GraphPad Virtual Tablet
+DeviceMatch=usb:1209:4750;
+Class=GraphPad
+Width=275
+Height=206
+IntegratedIn=
+Styli=graphpad-general;
+
+[Features]
+Stylus=true
+Reversible=true
+Touch=false
+Buttons=0
+
+[Buttons]
+Left=
+Right=
+Top=
+Bottom=
+

@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "host/crates/graphpad-core",
+    "host/crates/graphpad-input-linux",
+    "host/crates/graphpad-input-windows",
+    "host/crates/graphpad-daemon",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/graphpad/graphing-tablet-app"
+
